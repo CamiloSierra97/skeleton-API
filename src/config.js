@@ -1,5 +1,5 @@
 //? Dependencies
-requiere("dotenv").config();
+require("dotenv").config();
 
 const config = {
   port: process.env.PORT || 9000,

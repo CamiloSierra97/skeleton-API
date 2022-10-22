@@ -47,7 +47,17 @@ const deleteUser = async (id) => {
       id,
     },
   });
-  return data
+  return data;
+};
+
+const getUserByEmail = async (email) => {
+  //? SELECT * from users where email = 'example@mail.com'
+  const data = await Users.findOne({
+    where: {
+      email,
+    },
+  });
+  return data;
 };
 
 module.exports = {
@@ -56,4 +66,5 @@ module.exports = {
   creatUser,
   updateUser,
   deleteUser,
+  getUserByEmail,
 };

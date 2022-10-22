@@ -43,19 +43,12 @@ const patchUser = (req, res) => {
 };
 
 const registerUser = (req, res) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    phone,
-    birthday,
-  } = req.body;
+  const { firstName, lastName, email, password, phone, birthday } = req.body;
   if (firstName && lastName && email && password && phone && birthday) {
     //? Controller execution
   } else {
     //? Error when data is missing
-    res.status(400).json()
+    res.status(400).json();
   }
 };
 
@@ -79,5 +72,6 @@ module.exports = {
   getAllUsers,
   getUserById,
   patchUser,
+  registerUser,
   deleteUser,
 };

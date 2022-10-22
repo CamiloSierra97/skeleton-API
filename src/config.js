@@ -7,7 +7,7 @@ const config = {
   db: {
     host: process.env.BD_HOST || "localhost",
     username: process.env.DB_USER || "postgres",
-    password: process.env.BD_PASS || "root",
+    password: process.env.DB_PASSWORD || "root",
     dbName: process.env.DB_NAME,
   },
 };

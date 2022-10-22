@@ -1,10 +1,10 @@
-const router = requiere("express").router();
+const router = require("express").Router();
 
-const userServices = requiere("./users.services");
+const userServices = require("./users.services");
 
 //? Routes
 
-router.get("/", userServices.getAllUsers());
+router.get("/", userServices.getAllUsers);
 
 router
   .route("/:id")

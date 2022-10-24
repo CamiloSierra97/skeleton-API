@@ -38,7 +38,7 @@ const patchUser = (req, res) => {
           .status(200)
           .json({ message: `User with ID ${id}, edited succesfully` });
       } else {
-        res.status(404).json({ message: "Invalid ID" });
+        res.status(404).json({ message: "Invalid ID or missing data" });
       }
     })
     .catch((err) => {

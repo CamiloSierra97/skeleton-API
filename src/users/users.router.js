@@ -3,6 +3,7 @@ const userServices = require("./users.services");
 
 //? Protect routes
 const passport = require("passport");
+const adminValidate = require("../middlewares/role.middleware");
 require("../middlewares/auth.middleware")(passport);
 
 //? Routes
@@ -15,10 +16,7 @@ router.get(
 
 router
   .route("/me")
-  .get(
-    passport.authenticate("jwt", { session: false }),
-    userServices.getMyUser
-  )
+  .get(passport.authenticate("jwt", { session: false }), userServices.getMyUser)
   .patch(
     passport.authenticate("jwt", { session: false }),
     userServices.patchMyUser
@@ -31,7 +29,15 @@ router
 router
   .route("/:id")
   .get(userServices.getUserById)
-  .patch(userServices.patchUser)
-  .delete(userServices.deleteUser);
+  .patch(
+    passport.authenticate("jwt", { session: false }),
+    adminValidate,
+    userServices.patchUser
+  )
+  .delete(
+    passport.authenticate("jwt", { session: false }),
+    adminValidate,
+    userServices.deleteUser
+  );
 
 module.exports = router;

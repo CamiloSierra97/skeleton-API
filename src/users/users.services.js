@@ -57,7 +57,6 @@ const registerUser = (req, res) => {
     gender,
     country,
   } = req.body;
-  console.log(req.body);
   if (firstName && lastName && email && password && phone && birthday) {
     //? Controller execution
     userControllers

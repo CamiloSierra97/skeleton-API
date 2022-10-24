@@ -137,9 +137,9 @@ const patchMyUser = (req, res) => {
 const deleteMyUser = (req, res) => {
   const id = req.user.id; //? req.user contains the information from the decrypted token
   userControllers
-    .deleteUser(id)
+    .updateUser(id, { status: "inactive" })
     .then((data) => {
-      res.status(200).json(data);
+      res.status(200).json("Your user was deleted succesfully");
     })
     .catch((err) => {
       res.status(400).json({ message: err.message });

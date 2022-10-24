@@ -29,7 +29,6 @@ const createUser = async (data) => {
     gender: data.gender,
     country: data.country,
   });
-  console.log(newUser)
   return newUser;
 };
 

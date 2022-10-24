@@ -1,5 +1,5 @@
 //? Imports
-const { getUserByEmail } = require("../users/user.controllers");
+const { getUserByEmail } = require("../users/users.controllers");
 const { comparePassword } = require("../utils/crypto");
 
 //* User's email and password

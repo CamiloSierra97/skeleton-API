@@ -14,6 +14,21 @@ router.get(
 );
 
 router
+  .route("/me")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    userServices.getMyUser
+  )
+  .patch(
+    passport.authenticate("jwt", { session: false }),
+    userServices.patchMyUser
+  )
+  .delete(
+    passport.authenticate("jwt", { session: false }),
+    userServices.deleteMyUser
+  );
+
+router
   .route("/:id")
   .get(userServices.getUserById)
   .patch(userServices.patchUser)

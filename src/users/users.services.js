@@ -108,10 +108,51 @@ const deleteUser = (req, res) => {
     });
 };
 
+//? My user Services
+const getMyUser = (req, res) => {
+  const id = req.user.id; //? req.user contains the information from the decrypted token
+  userControllers
+    .getUserById(id)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      res.status(400).json({ message: err.message });
+    });
+};
+
+const patchMyUser = (req, res) => {
+  const id = req.user.id; //? req.user contains the information from the decrypted token
+  const { firstName, lastName, phone, birthday, gender, country } = req.body;
+  userControllers
+    .updateUser(id, { firstName, lastName, phone, birthday, gender, country })
+    .then((data) => {
+      res.status(200).json({ message: `Your user was edited succesfully` });
+    })
+    .catch((err) => {
+      res.status(400).json({ message: err.message });
+    });
+};
+
+const deleteMyUser = (req, res) => {
+  const id = req.user.id; //? req.user contains the information from the decrypted token
+  userControllers
+    .deleteUser(id)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      res.status(400).json({ message: err.message });
+    });
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
   patchUser,
   registerUser,
   deleteUser,
+  getMyUser,
+  patchMyUser,
+  deleteMyUser,
 };

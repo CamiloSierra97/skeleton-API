@@ -12,7 +12,7 @@ const ExtractJWT = require("passport-jwt").ExtractJwt; //? Get the headers from 
 
 module.exports = (passport) => {
   const options = {
-    jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme(" jwt"),
+    jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme("jwt"),
     secretOrKey: jwtSecret,
   };
 

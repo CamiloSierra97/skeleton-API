@@ -10,14 +10,11 @@ const login = (req, res) => {
     loginUser(email, password)
       .then((response) => {
         if (response) {
-          const token = jwt.sign(
-            {
-              id: res.id,
-              email: res.email,
-              role: res.role,
-            },
-            jwtSecret
-          );
+          const token = jwt.sign({
+            id: response.id,
+            email: response.email,
+            role: response.role,
+          }, jwtSecret);
           res.status(200).json({
             message: "User log in succesfully",
             token,

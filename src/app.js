@@ -6,7 +6,7 @@ const db = require("./utils/database");
 const config = require("./config");
 
 //? Routes
-const userRouter = require("./users/users.router");
+const usersRouter = require("./users/users.router");
 const authRouter = require("./auth/auth.router");
 
 //? Initial Configs
@@ -40,8 +40,8 @@ app.get("/", (req, res) => {
 });
 
 //? Verbs
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/users", authRouter);
+app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/auth", authRouter);
 
 app.listen(config.port, () => {
   console.log(`Server started at port ${config.port}`);

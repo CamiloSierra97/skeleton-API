@@ -1,5 +1,4 @@
 //? Authorization and authentication routes
-//* Login
 //* Recovery Password
 //* Verify User
 
@@ -11,5 +10,9 @@ const { registerUser } = require("../users/users.services");
 
 //* Register
 router.post("/register", registerUser);
+
+//* Login
+const authServices = require("./auth.services");
+router.post("/login", authServices.login);
 
 module.exports = router;

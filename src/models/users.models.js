@@ -8,7 +8,7 @@ const Users = db.define("users", {
     primaryKey: true,
     allowNull: false,
   },
-  fisrtName: {
+  firstName: {
     type: DataTypes.STRING,
     allowNull: false,
     field: "first_name",

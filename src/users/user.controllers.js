@@ -1,4 +1,4 @@
-//? DEpendencies
+//? Dependencies
 const uuid = require("uuid");
 const Users = require("../models/users.models");
 const { hashPassword } = require("../utils/crypto");
@@ -17,8 +17,8 @@ const getUserById = async (id) => {
   return data;
 };
 
-const creatUser = async (data) => {
-  const newUser = Users.create({
+const createUser = async (data) => {
+  const newUser = await Users.create({
     id: uuid.v4(),
     firstName: data.firstName,
     lastName: data.lastName,
@@ -29,6 +29,7 @@ const creatUser = async (data) => {
     gender: data.gender,
     country: data.country,
   });
+  console.log(newUser)
   return newUser;
 };
 
@@ -63,7 +64,7 @@ const getUserByEmail = async (email) => {
 module.exports = {
   getAllUsers,
   getUserById,
-  creatUser,
+  createUser,
   updateUser,
   deleteUser,
   getUserByEmail,

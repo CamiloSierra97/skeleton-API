@@ -4,6 +4,7 @@ const db = require("./utils/database");
 
 //? Files
 const config = require("./config");
+const initModels = require("./models/initModels");
 
 //? Routes
 const usersRouter = require("./users/users.router");
@@ -29,6 +30,8 @@ db.sync()
   .catch((err) => {
     console.log(err);
   });
+
+initModels();
 
 //? Petitions
 

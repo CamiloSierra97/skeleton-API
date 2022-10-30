@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const userServices = require("./users.services");
+const usersServices = require("./users.services");
 
 //? Protect routes
 const passport = require("passport");
@@ -11,33 +11,33 @@ require("../middlewares/auth.middleware")(passport);
 router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
-  userServices.getAllUsers
+  usersServices.getAllUsers
 );
 
 router
   .route("/me")
-  .get(passport.authenticate("jwt", { session: false }), userServices.getMyUser)
+  .get(passport.authenticate("jwt", { session: false }), usersServices.getMyUser)
   .patch(
     passport.authenticate("jwt", { session: false }),
-    userServices.patchMyUser
+    usersServices.patchMyUser
   )
   .delete(
     passport.authenticate("jwt", { session: false }),
-    userServices.deleteMyUser
+    usersServices.deleteMyUser
   );
 
 router
   .route("/:id")
-  .get(userServices.getUserById)
+  .get(usersServices.getUserById)
   .patch(
     passport.authenticate("jwt", { session: false }),
     adminValidate,
-    userServices.patchUser
+    usersServices.patchUser
   )
   .delete(
     passport.authenticate("jwt", { session: false }),
     adminValidate,
-    userServices.deleteUser
+    usersServices.deleteUser
   );
 
 module.exports = router;

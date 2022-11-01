@@ -8,6 +8,7 @@ require("../middlewares/auth.middleware")(passport);
 
 //? Routes
 
+//? /api/v1/users
 router.get(
   "/",
   passport.authenticate("jwt", { session: false }),

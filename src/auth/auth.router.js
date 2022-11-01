@@ -6,6 +6,8 @@ const router = require("express").Router();
 
 const { registerUser } = require("../users/users.services");
 
+//? Routes
+
 //? /api/v1/auth
 
 //* Register
